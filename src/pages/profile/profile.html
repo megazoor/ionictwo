@@ -1,0 +1,45 @@
+<!-- pages/profile/profile.html -->
+<ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Welcome, {{profile}}</ion-title>
+      <ion-buttons end>
+          <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+      </ion-buttons>  
+  </ion-navbar>
+<ion-content class="login" *ngIf="!auth.authenticated()">
+    <ion-segment [(ngModel)]="authType" color="primary">
+        <ion-segment-button value="login">
+            Log In
+        </ion-segment-button>
+        <ion-segment-button value="signup">
+            Sign Up
+        </ion-segment-button>
+    </ion-segment>    
+    <form #signForm="ngForm" (ngSubmit)="authenticate(signForm.value)">
+        <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input type="text" name="username" ngModel></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input type="password" name="password" ngModel></ion-input>
+        </ion-item>
+
+        <div padding>
+            <button block type="submit">Log In</button>
+        </div>
+    </form>
+
+    <button (click)="getAuth()">Get Quote</button>
+
+    <h3>{{ token }}</h3>
+</ion-content>
+<ion-content *ngIf="auth.authenticated()">
+    <h1>Welcome, {{ user }}</h1>
+    <div padding>
+        <button block (click)="logout()">Log Out</button>
+    </div>
+</ion-content>

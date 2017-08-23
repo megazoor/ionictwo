@@ -1,5 +1,8 @@
 {
   "name": "precision",
-  "app_id": "",
-  "type": "ionic-angular"
+  "app_id": "19050c00",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
